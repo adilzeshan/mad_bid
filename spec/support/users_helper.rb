@@ -18,7 +18,7 @@ module  UserHelper
     end
     click_button 'Log In'
   end
-  def create_user(username, password)
+  def create_user(username, email, password)
     User.create(username: username, email: email, password: password)
   end
 end
