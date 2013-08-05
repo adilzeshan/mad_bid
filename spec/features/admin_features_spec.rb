@@ -13,11 +13,7 @@ def admin_logout(admin)
     click_button 'Log Out'
 end
 
-feature 'an admin logs in under /admin', %q{
-    As the site owner
-    I want to provide an user management
-    so that I can protect functions and grant access based on roles
-  } do
+feature 'an admin logs in under /admin' do
 
 	background do
 		@admin = create(:admin)
