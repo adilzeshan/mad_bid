@@ -3,6 +3,12 @@ require 'spec_helper'
 
 
 
+
+
+
+
+# feature, scenario
+
 describe "visiting an index page" do
 	context "should see a signup form that" do
 		it "allows successful sign up" do
@@ -75,3 +81,7 @@ describe "visiting an index page" do
 	  end
 	end
 end
+
+
+
+# click submit button
