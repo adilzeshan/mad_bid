@@ -1,11 +1,5 @@
 require 'spec_helper'
 
-# Setup
-
-background do
-	@admin = create(:admin)
-end
-
 # Helpers
 
 def admin_login
@@ -19,17 +13,23 @@ def admin_logout(admin)
     click_button 'Log Out'
 end
 
-# Specifications
+feature 'an admin logs in under /admin', %q{
+    As the site owner
+    I want to provide an user management
+    so that I can protect functions and grant access based on roles
+  } do
 
-describe 'an admin logs in under /admin' do
+	background do
+		@admin = create(:admin)
+	end
 
-	it 'logs in' do
+	scenario 'logs in' do
 		admin_login
 		visit '/admin/dashboard'
 		expect(page).to_have_css 'h1', text: 'Admin Dashboard'
 	end
 
-	it 'logs out' do
+	scenario 'logs out' do
 		admin_logout(@admin)
 		visit '/admin'
 		expect(page).to have_content 'Log in'
