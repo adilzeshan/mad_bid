@@ -41,4 +41,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.formatter = :documentation
+  # Helpers
+  config.include(UserHelper)
 end
