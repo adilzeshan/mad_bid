@@ -1,3 +1,4 @@
+# WATCH OUT: capybara specs do not work with devise
 require 'spec_helper'
 # make sure the database is clean with each run
 # watchout for record conflicts

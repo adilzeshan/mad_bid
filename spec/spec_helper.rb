@@ -43,4 +43,5 @@ RSpec.configure do |config|
   config.formatter = :documentation
   # Helpers
   config.include(UserHelper)
+  config.include(ListingHelper)
 end
