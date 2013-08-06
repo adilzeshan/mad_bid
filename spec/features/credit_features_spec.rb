@@ -7,16 +7,7 @@ feature 'credits' do
 	background do
 
 	end
-
-	#Helpers
-
-	def select_top_up
-		visit '/'
-		click_link 'Top up'
-		click_link '500 credits'
-		visit '/payment'
-	end
-
+	
 	#Examples
 
 	scenario 'select a top-up' do
