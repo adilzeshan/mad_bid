@@ -16,7 +16,7 @@ feature "winning a bid" do
 	end
 end
 
-after (:all) do
-	User.delete_all
-	Listing.delete_all
-end
+# after (:all) do
+# 	User.delete_all
+# 	Listing.delete_all
+# end

@@ -44,4 +44,6 @@ RSpec.configure do |config|
   # Helpers
   config.include(UserHelper)
   config.include(ListingHelper)
+  config.include(CreditHelper)
+  config.include(AdminHelper)
 end
