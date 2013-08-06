@@ -20,4 +20,11 @@ feature 'admin duties' do
 		expect(page).to_not have_content 'Admin'
 	end
 
+	scenario 'creates listing' do
+		admin_login
+		visit '/admin/dashboard' 
+		create_listing
+  		expect(page).to have_content "New listing created."	
+  	end
+
 end
