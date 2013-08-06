@@ -17,21 +17,21 @@ feature 'credits' do
 		visit '/payment'
 	end
 
-	#Exampless
+	#Examples
 
 	scenario 'select a top-up' do
-		top_up_credits
+		select_top_up
 		expect(page).to have_css 'h2', text: 'Choose a payment'
 	end
 
 	scenario 'choose to pay by PayPal' do
-		top_up_credits
+		select_top_up
 		choose('Paypal')
 		click_button 'OK'
 	end
 
 	scenario 'choose to pay by credit card' do
-		top_up_credits
+		select_top_up
 		choose('Credit card')
 		click_button('OK')
 	end
