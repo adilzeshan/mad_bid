@@ -1,22 +1,10 @@
 require 'spec_helper'
 
-# Helpers
-
-def admin_login
-		visit '/admin'
-		fill_in "Username", :with => 'admin'
-		fill_in "Password", :with => '12345678'
-		click_button "Log in"
-end
-
-def admin_logout(admin)
-    click_button 'Log Out'
-end
-
-feature 'an admin logs in under /admin' do
+feature 'admin duties' do
 
 	background do
 		@admin = create(:admin)
+		@listing = create(:listing)
 	end
 
 	scenario 'logs in' do
