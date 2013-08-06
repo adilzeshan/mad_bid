@@ -1,5 +1,8 @@
 MadBid::Application.routes.draw do
 
+  resources :listings do
+  end
+  
   root "welcome#index"
   devise_for :admins
     
