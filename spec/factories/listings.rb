@@ -1,14 +1,14 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :listing do
-    title ""
-    description ""
-    starting_price ""
-    rrp ""
-    cost_per_bid ""
-    countdown_duration ""
-    starting_date ""
+    title "iPhone 5"
+    description "Awesome retina display"
+    starting_price "12"
+    rrp "559"
+    current_price "1200"
+    cost_per_bid "5"
+    countdown_duration "10"
+    starting_date Time.now
     expiring_date "2013-08-06 15:32:45"
+    active false
   end
 end
