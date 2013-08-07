@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20130807142636) do
   create_table "bids", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "users_id"
+    t.integer  "listings_id"
   end
 
   create_table "listings", force: true do |t|

@@ -15,7 +15,7 @@ let(:user) {Factory.build(:user)}
   it 'bidding increments cost of listing'
   end
 
-  context 'timer'
+  context ''
 
   context ''
 end
