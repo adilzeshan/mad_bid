@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20130807164019) do
     t.datetime "updated_at"
     t.integer  "users_id"
     t.integer  "listings_id"
+    t.integer  "before_price"
+    t.integer  "after_price"
   end
 
   create_table "listings", force: true do |t|
