@@ -1,5 +1,6 @@
 MadBid::Application.routes.draw do
 
+  devise_for :users
   resources :listings do
   end
   
