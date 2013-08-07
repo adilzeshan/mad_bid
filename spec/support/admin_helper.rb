@@ -11,7 +11,7 @@ module AdminHelper
 	    click_button 'Log Out'
 	end
 
-	def create_listing
+	def input_listing
 		fill_in "Title", :with => 'iPhone 5 16GB'
 		fill_in "Description", :with => 'Brilliant 4-inch Retina display'
 		fill_in "Starting Price", :with => '£12.99'

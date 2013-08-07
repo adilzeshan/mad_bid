@@ -23,7 +23,7 @@ feature 'admin duties' do
 	scenario 'creates listing' do
 		admin_login
 		visit '/admin/dashboard' 
-		create_listing
+		input_listing
   		expect(page).to have_content "New listing created."	
   	end
 
