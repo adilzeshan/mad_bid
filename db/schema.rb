@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 20130807164019) do
   create_table "bids", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "users_id"
-    t.integer  "listings_id"
     t.integer  "before_price"
     t.integer  "after_price"
   end
