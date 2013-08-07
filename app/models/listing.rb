@@ -18,16 +18,7 @@
 
 
 class Listing < ActiveRecord::Base
-	attr_reader :price_now
-	def initilize
-		@latest_bidder = nil
-		@price_now = self.current_price
-	end
-
-	def price_now
-		self.current_price
-	end
-
+	
 	validates :title, :starting_price, :rrp, :cost_per_bid, :countdown_duration,
 						:starting_date, :expiring_date, presence: true
 
