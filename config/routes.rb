@@ -1,10 +1,12 @@
 MadBid::Application.routes.draw do
 
+  get "home/index"
+  get "admins_pannel/index"
   devise_for :users
   resources :listings do
   end
   
-  root "welcome#index"
+  root "home#index"
   devise_for :admins
     
   # The priority is based upon order of creation: first created -> highest priority.

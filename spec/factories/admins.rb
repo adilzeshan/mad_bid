@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :admin do
+  	email "admin@madbid.com"
+  	password "admin_Password12"
   end
 end

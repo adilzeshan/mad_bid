@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Admin do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "a valid admin can be created" do
+  	a = FactoryGirl.build(:admin)
+		expect(a).to be_valid
+  end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WelcomeController do
+describe AdminsPannelController do
 
   describe "GET 'index'" do
     it "returns http success" do
