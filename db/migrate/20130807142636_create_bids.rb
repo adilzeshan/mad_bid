@@ -3,6 +3,8 @@ class CreateBids < ActiveRecord::Migration
     create_table :bids do |t|
 
       t.timestamps
+      t.belongs_to :users
+      t.belongs_to :listings
     end
   end
 end
