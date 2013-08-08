@@ -45,7 +45,7 @@ describe Listing do
 	  	bid = FactoryGirl.create(:bid)
 	  	old_price = listing.current_price
 	  	time = Time.now
-	 		listing.bid(user.username, bid.id, time) # change to email
+	 		listing.add_bid(user.username, bid.id, time)
 	  	expect(listing.current_price).to eq (old_price + listing.cost_per_bid)
 	  	expect(listing.latest_bidder).to eq "user1"
 	  	expect(listing.latest_bid_time).to eq time
