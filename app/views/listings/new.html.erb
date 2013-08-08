@@ -1,0 +1,13 @@
+<h3>Create a new Article:</h3>
+<%= form_for Listing.new do |f| %>
+<%= f.text_field :title, placeholder: "Listing Title" %><br>
+<%= f.text_area :description, placeholder: "Write listing's description here" %><br>
+<%= f.text_field :starting_price, placeholder: "Starting Price"  %><br>
+<%= f.text_field :rrp, placeholder: "Recomended Retile Price"  %><br>
+<%= f.text_field :current_price, placeholder: "Current Price"  %><br>
+<%= f.text_field :cost_per_bid, placeholder: "Cost per bid"  %><br>
+<%= f.text_field :countdown_duration, placeholder: "Countdown duration"  %><br>
+<%= f.datetime_select :starting_date  %><br>
+<%= f.datetime_select :expiring_date  %><br>
+<%= f.submit %>
+<% end %>

@@ -17,8 +17,9 @@
   # end
 
 
+# set countdown duration to something else
 class Listing < ActiveRecord::Base
-	
+
 	validates :title, :starting_price, :rrp, :cost_per_bid, :countdown_duration,
 						:starting_date, :expiring_date, presence: true
 

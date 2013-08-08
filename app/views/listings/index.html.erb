@@ -1,2 +1,7 @@
-<h1>Listings#index</h1>
-<a href="/listings/new">New Listings</a>
+<%= link_to 'Create a new listing', new_listing_path %>
+<h1>List of Listings</h1>
+<% @listings.each do |listing| %>
+	<a href="<%= url_for(listing) %>">
+		<h2> <%= listing.title %> </h2>
+	</a>
+<% end %>
