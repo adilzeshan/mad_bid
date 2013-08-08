@@ -1,0 +1,38 @@
+<a href="/listings">All Listings</a> <!--refactor-->
+<%= link_to 'Delete this listing', @listing, method: :delete, :confirm => 'Are you sure?' %>
+<%= link_to 'Edit this listing', edit_listing_path %>
+<h2> <%= @listing.title %> </h2>
+<table border="0" style="text-align: center">
+  <tr>
+    <td>Description: </td>
+    <td><%= @listing.description %></td>
+  </tr>
+  <tr>
+    <td>Starting price: </td>
+    <td><%= @listing.starting_price %></td>
+  </tr>
+    <tr>
+    <td>RRP: </td>
+    <td><%= @listing.rrp %></td>
+  </tr>
+  <tr>
+    <td>Current price: </td>
+    <td><%= @listing.current_price %></td>
+  </tr>
+  <tr>
+    <td>Cost per bid: </td>
+    <td><%= @listing.cost_per_bid %></td>
+  </tr>
+  <tr>
+    <td>Countdown duration: </td>
+    <td><%= @listing.countdown_duration %></td>
+  </tr>
+  <tr>
+    <td>Starting date: </td>
+    <td><%= @listing.countdown_duration %></td>
+  </tr>
+  <tr>
+    <td>Expiring date: </td>
+    <td><%= @listing.countdown_duration %></td>
+  </tr>
+</table>

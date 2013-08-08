@@ -27,3 +27,5 @@
 #   	expect(page).to have_content "New listing created."	
 #  	end
 # end
+
+# test that error messages are displayer
