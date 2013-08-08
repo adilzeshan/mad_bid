@@ -23,29 +23,8 @@ class User < ActiveRecord::Base
 
   def makes_bid item
     time_now = Time.now
-    my_bid = Bid.create
-    item.bid(self.username, my_bid.id, time_now)
+    my_bid = Bid.create(user: self, listing: item)
+    item.add_bid(self.username, my_bid.id, time_now)
   end
 
-    #   time = Time.now
-    # my_bid = Bid.new
-    # item.bid(self.email, my_bid.id, time)
-
-	# @time_of_the_bid
-	# @listing = Listing.find(params[:listing])
-	# @current_user.makes_bid(@listing)
-
-	# def makes_bid(listing, @time_of_the_bid)
-	# 	bid = Bid.new(self.user.id,listing.id, listing.before_price, listing.after_price)
-		
-	# 	@listing.increment_price(user.username)
-
-	# 	@listing.bid(self.username, bid.id)
-
-	# 	#insider listing mode
-	# 	def bid(username, bid_id, Time.now)
-	# 		self.increment_price
-	# 	end
-
-	# end
 end
