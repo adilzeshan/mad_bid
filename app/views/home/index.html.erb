@@ -1,12 +1,31 @@
-<h1>Mad Bid</h1>
-<div class="row">
 
-<div class="col-lg-1"></div>
+
+<div class="row">
+	<div class="row">
 <% @listings.each do |listing| %>
-	<div class="col-lg-3 col-sm-4 listing">
-	<a href="<%= url_for(listing) %>">
-		<h2> <%= listing.title %> </h2>
-	</a>
-	</div>
+		<div class="col-lg-4 col-sm-6">
+			<div class="panel">
+				<a href="<%= url_for(listing) %>">
+				<h4> <%= listing.title %> </h4>
+				<h5> RRP: <%= "£ #{listing.rrp.to_f}" %> </h5>
+				<img src="http://d2mub7s43po4ah.cloudfront.net/mobile/en-UK/0/3/4/The-New-Apple-Bundle-0001327034.normal.jpg" class="img-responsive">
+				</a>
+		  <div class="panel-footer">
+		  	<h2><%= "£#{listing.current_price.to_f}0" %></h2>
+		  	<div class="status">
+					<h4>00:00:07</h4><br>
+					<h5>last_bidder74</h5>
+				</div>
+				<button type="button" class="btn btn-warning">Bid</button>
+		  </div>
+			</div>
+		</div>
 <% end %>
+	</div>
 </div>
+
+
+
+
+
+

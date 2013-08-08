@@ -1,7 +1,43 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.listing {
-	border:1px solid black;
-	margin: 0 2px;
+body {
+	background: rgb(247, 247, 249);
+}
+/*.listing {
+	width: 400px;
+}*/
+.panel {
+	text-align: center;
+}
+.panel-footer {
+	height: 65px;
+	padding-right: 0;
+}
+.panel-footer * {
+	display: inline;
+}
+.panel-footer h4 {
+	color: red;
+}
+.panel-footer h2 {
+	float: left;
+	margin-top: 5px;
+}
+.panel a {
+	color: black;
+}
+
+.status {
+	float: left;
+	width: 170px;
+	display: block;
+	text-align: center;
+}
+.panel-footer button {
+	float: right;
+	height: 65px;
+	width: 65px;
+	margin-top: -10px;
+	border-radius: 0px 0px 4px 0px;
 }

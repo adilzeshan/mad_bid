@@ -8,12 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="navbar navbar-static-top">
+<a class="navbar-brand" href="/">MadBid!</a>
+<a class=""></button>
+<%= link_to 'Sign In', new_user_session_path, class: "btn btn-default navbar-btn pull-right"%>
+<%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-default navbar-btn pull-right"%>
+
+<!-- <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+ -->
+</div>
+
+
+<div class="container">
 <% unless flash.empty? %>
 	<%= flash[:alert] %><br>
 	<%= flash[:notice] %><br>
 	<%= flash[:message] %><br>
 <% end %>
 <%= yield %>
-
+</div>
 </body>
 </html>
