@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
-	before_filter :authenticate_admin!
+	# don't display edit pannel if not admin
+	before_filter :authenticate_admin!, except: :show
 
 	# before filter only admin is authorised here
 	layout "listing"
@@ -60,6 +61,6 @@ class ListingsController < ApplicationController
   def permited_params
   	params[:listing].permit(
 	  			:title, :description, :starting_price, :rrp, :current_price,
-	  			:cost_per_bid, :countdown_duration, :starting_date, :expiring_date)
+	  			:cost_per_bid, :countdown_duration, :starting_date, :expiring_date, :active)
   end
 end

@@ -3,12 +3,16 @@
 <html>
 <head>
   <title>MadBid</title>
+  <%= stylesheet_link_tag "bootstrap.min.css" %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= flash[:message] %><br>
+<% unless flash.empty? %>
+	<%= flash[:message] %><br>
+<% end %>
+
 <%= link_to 'Admin Panel', admins_pannel_index_path %><br>
 <%= yield %>
 

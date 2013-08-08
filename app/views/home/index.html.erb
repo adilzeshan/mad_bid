@@ -1,2 +1,12 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Mad Bid</h1>
+<div class="row">
+
+<div class="col-lg-1"></div>
+<% @listings.each do |listing| %>
+	<div class="col-lg-3 col-sm-4 listing">
+	<a href="<%= url_for(listing) %>">
+		<h2> <%= listing.title %> </h2>
+	</a>
+	</div>
+<% end %>
+</div>

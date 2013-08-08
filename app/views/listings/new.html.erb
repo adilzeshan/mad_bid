@@ -9,5 +9,6 @@
 <%= f.text_field :countdown_duration, placeholder: "Countdown duration"  %><br>
 <%= f.datetime_select :starting_date  %><br>
 <%= f.datetime_select :expiring_date  %><br>
+<%= f.select(:active, [['Active', true], ['Inactive', false]]) %><br>
 <%= f.submit %>
 <% end %>
