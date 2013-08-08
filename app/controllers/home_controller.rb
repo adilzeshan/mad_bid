@@ -3,7 +3,8 @@ class HomeController < ApplicationController
   	if current_admin
   		render 'admins_pannel/index'
   	else
-  		render 'listings/index'
+  		#render 'listings/index'
+  		"Ha"
   	end
   end
 end

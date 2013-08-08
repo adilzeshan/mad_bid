@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+	before_filter :authenticate_admin!
+
 	# before filter only admin is authorised here
 	layout "listing"
 		# test expiry data is > starting date
