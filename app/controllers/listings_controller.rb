@@ -50,10 +50,7 @@ class ListingsController < ApplicationController
 	end
 
 
-
-
-
-  private
+  private # push to helper
   def current_listing
   	@listing = Listing.find(params[:id])
   end
