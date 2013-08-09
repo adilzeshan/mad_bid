@@ -20,10 +20,10 @@
 # set countdown duration to something else
 class Listing < ActiveRecord::Base
 
-	validates :title, :starting_price, :rrp, :cost_per_bid, :countdown_duration,
+	validates :title, :starting_price, :rrp, :credits_per_bid, :countdown_duration,
 						:starting_date, :expiring_date, presence: true
 
-	validates :starting_price, :rrp, :current_price, :cost_per_bid,
+	validates :starting_price, :rrp, :current_price, :credits_per_bid,
 	length: {
 		minimum: 1,
 		maximum: 6,
@@ -31,7 +31,7 @@ class Listing < ActiveRecord::Base
     too_long: "The price must have at most %{count} digits"
 	}
 	
-	validates :starting_price, :rrp, :current_price, :cost_per_bid, :countdown_duration,
+	validates :starting_price, :rrp, :current_price, :credits_per_bid, :countdown_duration,
 	numericality: { only_integer: true }
 
 

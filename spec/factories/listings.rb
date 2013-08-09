@@ -5,7 +5,7 @@ FactoryGirl.define do
     starting_price "12"
     rrp "559"
     current_price "1200"
-    cost_per_bid "5"
+    credits_per_bid "5"
     countdown_duration "10"
     starting_date Time.now
     expiring_date "2013-08-06 15:32:45"

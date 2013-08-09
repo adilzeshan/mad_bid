@@ -65,6 +65,6 @@ class ListingsController < ApplicationController
   def permited_params
   	params[:listing].permit(
 	  			:title, :description, :starting_price, :rrp, :current_price,
-	  			:cost_per_bid, :countdown_duration, :starting_date, :expiring_date, :active)
+	  			:credits_per_bid, :countdown_duration, :starting_date, :expiring_date, :active)
   end
 end

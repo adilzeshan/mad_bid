@@ -25,9 +25,9 @@ describe Listing do
 	    expect(listing).to_not be_valid
 	    listing = FactoryGirl.build(:listing, starting_price: 123123132)
 	  	expect(listing).to_not be_valid
-	  	listing = FactoryGirl.build(:listing, cost_per_bid: 2132133)
+	  	listing = FactoryGirl.build(:listing, credits_per_bid: 2132133)
 	  	expect(listing).to_not be_valid
-	  	listing = FactoryGirl.build(:listing, cost_per_bid: "2d3")
+	  	listing = FactoryGirl.build(:listing, credits_per_bid: "2d3")
 	  	expect(listing).to_not be_valid
 	  end
 
