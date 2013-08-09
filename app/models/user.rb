@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
 	has_many :bids
 
 
-  private
-  def makes_bid item
+def makes_bid item
     time_now = Time.now
     my_bid = Bid.create(user: self, listing: item)
+    my_bid.update_price item.current_price
     item.add_bid(self.username, my_bid.id, time_now)
   end
 
