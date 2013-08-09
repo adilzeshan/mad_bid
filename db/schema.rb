@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808133226) do
+ActiveRecord::Schema.define(version: 20130809154158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20130808133226) do
     t.text     "description"
     t.integer  "starting_price"
     t.integer  "rrp"
-    t.integer  "cost_per_bid"
+    t.integer  "credits_per_bid"
     t.integer  "countdown_duration"
     t.datetime "starting_date"
     t.datetime "expiring_date"

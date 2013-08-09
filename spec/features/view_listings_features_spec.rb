@@ -14,6 +14,6 @@ feature 'View Listings' do
 	end
 end
 
-after(:all) do
-	Listing.delete_all
-end
+# after(:all) do
+# 	Listing.delete_all
+# end
