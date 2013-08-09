@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	
 	has_many :bids
 
+
+  private
   def makes_bid item
     time_now = Time.now
     my_bid = Bid.create(user: self, listing: item)

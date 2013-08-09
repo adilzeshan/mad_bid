@@ -27,7 +27,6 @@ body {
 .panel a {
 	color: black;
 }
-
 .status {
 	float: left;
 	width: 170px;
@@ -40,4 +39,19 @@ body {
 	width: 65px;
 	margin-top: -10px;
 	border-radius: 0px 0px 4px 0px;
+}
+
+.navbar-form .form-control {
+	width: 100px;
+	margin-top: 8px;
+/*	display: none;
+*/}
+#user_remember_me, .navbar-form label {
+/*	display: none;
+*/}
+
+
+.navbar-brand {
+	margin-top: 12px;
+	font-size: xx-large;
 }
