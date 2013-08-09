@@ -25,4 +25,8 @@ describe Bid do
 			expect(@my_bid.after_price).to eq 21
 		end
 	end
+
+	context '' do
+
+	end
 end
