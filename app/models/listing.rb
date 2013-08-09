@@ -41,7 +41,8 @@ class Listing < ActiveRecord::Base
 		self.update(active:true)
 	end
 
+
 	def add_bid(username, bid_id, time)
-		self.update(latest_bidder:username, latest_bid_time:time, latest_bid_id:bid_id, current_price: self.current_price + self.cost_per_bid)
+		self.update(latest_bidder:username, latest_bid_time:time, latest_bid_id:bid_id, current_price: self.current_price + 1)
 	end
 end
