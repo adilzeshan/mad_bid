@@ -1,5 +1,6 @@
 MadBid::Application.routes.draw do
 
+  post "bids/create"
   get "home/index"
   get "admins_pannel/index"
   devise_for :users

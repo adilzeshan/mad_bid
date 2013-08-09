@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
 	# don't display edit pannel if not admin
 	before_filter :authenticate_admin!, except: :show
+	respond_to :html, :json
 
 	# before filter only admin is authorised here
 	layout "listing"
@@ -25,6 +26,12 @@ class ListingsController < ApplicationController
 
   def show
   	current_listing
+
+		# but this is not flexible enough if we won't to specify fields, so we can do:
+		respond_with @listing do |format|
+			format.html
+			format.json {render json: @listing.as_json(only: [:current_price, :latest_bidder])}
+		end
   end
 
   def edit

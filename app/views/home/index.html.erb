@@ -1,3 +1,5 @@
+
+
 <div class="row">
 	<div class="row">
 <% @listings.each do |listing| %>
@@ -8,16 +10,45 @@
 				<h5> RRP: <%= "£ #{listing.rrp.to_f}" %> </h5>
 				<img src="http://d2mub7s43po4ah.cloudfront.net/mobile/en-UK/0/3/4/The-New-Apple-Bundle-0001327034.normal.jpg" class="img-responsive">
 				</a>
-		  <div class="panel-footer">
-		  	<h2><%= "£#{listing.current_price.to_f}0" %></h2>
+		  <div class="panel-footer <%="li-#{listing.id}"%>">
+		  	<h2 class="price"><%= "£#{(listing.current_price/100.0)}" %></h2>
 		  	<div class="status">
 					<h4>00:00:07</h4><br>
-					<h5>last_bidder74</h5>
+					<h5 class="bidder"><%= listing.latest_bidder %></h5>
 				</div>
-				<button type="button" class="btn btn-warning">Bid</button>
+				<button type="button" data-listing-id="<%=listing.id%>" class="btn btn-warning bid">Bid</button>
 		  </div>
 			</div>
 		</div>
 <% end %>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+function getListing(listing_id) {
+	$.getJSON('listings/'+ listing_id +'show', function(data) {
+		var current_price = data.current_price;
+		var latest_bidder = data.latest_bidder;
+		// console.log(latest_bidder, current_price);
+		//$('.price').html('£' + current_price/100)
+		//to create the impression of speed before the server even receives the bid
+		$('.li-' + listing_id + ' .price').html('£' + current_price/100);
+		//individual price class
+		$('.li-' + listing_id + ' .bidder').html(latest_bidder);
+	});
+};
+
+function postBid(listing_id) {
+	$.post('bids/create', { id: listing_id }).done(getListing(listing_id));
+	console.log({ id : listing_id });
+}
+	
+$(document).ready(function() {
+	$(".bid").click(function(event) {
+	  var listing_id = $(event.target).data("listingId");
+	  postBid(listing_id);
+	});
+});
+
+</script>

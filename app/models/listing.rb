@@ -42,6 +42,15 @@ class Listing < ActiveRecord::Base
 	end
 
 	def add_bid(username, bid_id, time)
-		self.update(latest_bidder:username, latest_bid_time:time, latest_bid_id:bid_id, current_price: self.current_price + self.cost_per_bid)
+		self.update(latest_bidder:username, latest_bid_time:time, latest_bid_id:bid_id, current_price: self.current_price + 1)
 	end
+
+
+
+  # def price_in_pounds
+  #   "£#{(self.current_price/100.0).round(2)}"
+  # end
+  # def current_price
+  #   "£#{(read_attribute(:current_price)/100.0).round(2)}"
+  # end
 end
