@@ -31,15 +31,15 @@ var listings = <%= @listings.map(&:id) %>
 <script type="text/javascript">
 
 function getListing(listing_id) {
-	$.getJSON('listings/'+ listing_id +'show', function(data) {
-		var current_price = data.current_price;
-		var latest_bidder = data.latest_bidder;
+	$.getJSON('listings/'+ listing_id, function(data) {
+		// var current_price = data.current_price;
+		// var latest_bidder = data.latest_bidder;
 		// console.log(latest_bidder, current_price);
 		//$('.price').html('£' + current_price/100)
 		//to create the impression of speed before the server even receives the bid
-		$('.li-' + listing_id + ' .price').html('£' + current_price/100);
+		$('.li-' + listing_id + ' .price').html('£' + data.current_price/100);
 		//individual price class
-		$('.li-' + listing_id + ' .bidder').html(latest_bidder);
+		$('.li-' + listing_id + ' .bidder').html(data.latest_bidder);
 	});
 };
 
@@ -50,8 +50,8 @@ function postBid(listing_id) {
 	
 $(document).ready(function() {
 	$(".bid").click(function(event) {
-	  var listing_id = $(event.target).data("listingId");
-	  postBid(listing_id);
+	  //var listing_id = $(event.target).data("listingId");
+	  $(postBid($(this).data("listingId")));
 	});
 });
 
