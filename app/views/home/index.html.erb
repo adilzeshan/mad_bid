@@ -1,3 +1,7 @@
+<!-- number to price rails method -->
+<script type="text/javascript">
+var listings = <%= @listings.map(&:id) %>
+</script>
 
 
 <div class="row">
@@ -13,7 +17,7 @@
 		  <div class="panel-footer <%="li-#{listing.id}"%>">
 		  	<h2 class="price"><%= "£#{(listing.current_price/100.0)}" %></h2>
 		  	<div class="status">
-					<h4>00:00:07</h4><br>
+					<h4 data-countdown="<%= listing.countdown_duration %>" id="timer-<%=listing.id%>"></h4><br>
 					<h5 class="bidder"><%= listing.latest_bidder %></h5>
 				</div>
 				<button type="button" data-listing-id="<%=listing.id%>" class="btn btn-warning bid"><i class="icon-legal"></i><br>&nbsp;Bid</button>
@@ -50,5 +54,39 @@ $(document).ready(function() {
 	  postBid(listing_id);
 	});
 });
+
+
+function timer(listing_id) {
+		var timerElement = $("#timer-" + listing_id);
+		// var count = timerElement.data("countdown");
+
+		var counter = setInterval(function() { timer(timerElement) }, 1000);
+		function timer(el) {
+		  if(el.data('time-remaining') === undefined) {
+		  	el.data('time-remaining', el.data('countdown'))
+		  }
+			count = el.data('time-remaining') - 1;
+
+			min = ("0" + Math.floor(count/60)).slice(-2);
+			sec = ("0" + count % 60).slice(-2);
+		  if (count < 0) {
+		     clearInterval(counter);
+		     return;
+		  };
+			el.html("00"+ ":" + min + ":" + sec);
+			el.data('time-remaining', count);
+		}
+}
+
+function resetTimer(el) {
+	el.data('time-remaining', el.data('countdown'));
+}
+
+$(document).ready(function() {
+for (var i = listings.length - 1; i >= 0; i--) {
+	timer(listings[i]);
+};
+});
+
 
 </script>
