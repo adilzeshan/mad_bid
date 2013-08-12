@@ -26,11 +26,10 @@ class ListingsController < ApplicationController
 
   def show
   	current_listing
-  		current_listing.expired?
 		# but this is not flexible enough if we won't to specify fields, so we can do:
 		respond_with @listing do |format|
 			format.html
-			format.json {render json: @listing.as_json(only: [:current_price, :latest_bidder, :active])}
+			format.json {render json: @listing.as_json(only: [:current_price, :latest_bidder])}
 		end
   end
 
