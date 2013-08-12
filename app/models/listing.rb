@@ -16,6 +16,7 @@
   #   t.integer  "latest_bid_id"
   # end
 
+  # DELETE: "expiring_date"
 
 # set countdown duration to something else
 class Listing < ActiveRecord::Base
