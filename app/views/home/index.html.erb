@@ -17,7 +17,7 @@ var listings = <%= @listings.map(&:id) %>
 		  <div class="panel-footer <%="li-#{listing.id}"%>">
 		  	<h2 class="price"><%= "£#{(listing.current_price/100.0)}" %></h2>
 		  	<div class="status">
-					<h4 data-countdown="<%= listing.countdown_duration %>" data-expiry="<%= listing.expiring_date %>" id="timer-<%=listing.id%>"></h4><br>
+					<h4 data-countdown="<%= listing.countdown_duration %>" data-last-bid="<%= (listing.latest_bid_time.to_f*1000).round %>" id="timer-<%=listing.id%>"></h4><br>
 					<h5 class="bidder"><%= listing.latest_bidder %></h5>
 				</div>
 				<button type="button" data-listing-id="<%=listing.id%>" class="btn btn-warning bid"><i class="icon-legal"></i><br>&nbsp;Bid</button>
@@ -38,7 +38,7 @@ function postBid(listing_id) {
 function fetchAndAnimateBid(listing_id, current_price, latest_bidder) {
 	// might nest
 	// pass expiry-date & base time remaining on that?
-	
+
 	resetTimer(listing_id);
 	$("#timer-" + listing_id).animate({fontSize: "28"}, 10);
 	$("#timer-" + listing_id).animate({fontSize: "18"}, 400);
@@ -60,9 +60,9 @@ function timer(listing_id) {
 
 		var counter = setInterval(function() { timer(timerElement) }, 1000);
 		function timer(el) {
-		  if(el.data('time-remaining') === undefined) {
-		  	el.data('time-remaining', el.data('countdown') + 1)	// account for -1
-		  }
+		  // if(el.data('time-remaining') === undefined) {
+		  // 	el.data('time-remaining', el.data('countdown') + 1)	// account for -1
+		  // }
 			count = el.data('time-remaining') - 1;
 
 			min = ("0" + Math.floor(count/60)).slice(-2);
@@ -82,8 +82,18 @@ function resetTimer(listing_id) {
 	//timer(listing_id);
 }
 
+function initTimeRemaining(listing_id) {
+	var el = $("#timer-" + listing_id);
+	var past = Math.floor( ((new Date()).getTime() - el.data('last-bid'))/1000 );
+	var delta = el.data('countdown') - past;
+	//var delta = Math.floor((new Date() - d)/1000); 	//floor or top?
+	el.data('time-remaining', delta);
+	console.log((new Date()).getTime() + '-' + (el.data('last-bid')) + ' = ' + delta);
+}
+
 $(document).ready(function() {
 	for (var i = listings.length - 1; i >= 0; i--) {
+		initTimeRemaining(listings[i]);
 		timer(listings[i]);
 	};
 });
