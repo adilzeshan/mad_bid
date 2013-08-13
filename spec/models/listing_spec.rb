@@ -46,7 +46,7 @@ describe Listing do
 	  	old_price = listing.current_price
 	  	time = Time.now
 	 		listing.add_bid(user.username, bid.id, time)
-	  	expect(listing.current_price).to eq (old_price + listing.cost_per_bid)
+	  	expect(listing.current_price).to eq (old_price + 1)
 	  	expect(listing.latest_bidder).to eq "user1"
 	  	expect(listing.latest_bid_time).to eq time
 	  	expect(listing.latest_bid_id).to eq bid.id
@@ -54,6 +54,30 @@ describe Listing do
 	  	User.destroy_all
 	  	Bid.destroy_all
 	  end
+  end
+
+  context 'countdown_timer' do
+
+  	describe 'is active' do
+      it 'the timer has just kicked off' do
+        listing = FactoryGirl.build(:active_listing)
+        listing.starting_date = Time.now - listing.countdown_duration
+        expect(listing.expired?).to be_false
+      end
+  	end
+
+  	describe 'is inactive' do
+      it 'set countdown duration' do
+        listing = FactoryGirl.build(:listing)
+        listing.set_countdown_duration 30
+        expect(listing.countdown_duration).to eq 30
+      end
+
+      it 'the timer has ended' do
+        listing = FactoryGirl.build(:listing)
+        expect(listing.expired?).to be_true
+      end
+  	end
   end
 end
 
