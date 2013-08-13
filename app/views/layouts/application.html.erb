@@ -12,43 +12,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-static-top">
-<a class="navbar-brand" href="/">MadBid!</a>
-<div class="pull-right">
-<% unless user_signed_in? %>
-<%= form_for(resource, :as => resource_name, :html => {:class => "navbar-form new_user"} ,:url => session_path(resource_name)) do |f| %>
 
-  <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
-  <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
-    <%= f.submit "Sign in", class: "btn btn-default navbar-btn" %>
-  <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-default navbar-btn"%><br>
-  <% if devise_mapping.rememberable? -%>
-  <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-  <% end -%>
-<% end %>
-<% end %>
-<% if user_signed_in? %>
-<h4 class="navbar-text">Signed in as <a href="#" class="navbar-link"><%= current_user.username.capitalize %></a></h4>
-<%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-default navbar-btn pull-right"%>
-
-<% end %>
-</div>
-</div>
-
-
-<div class="container">
-<%if flash[:alert] %>
-<div class="alert alert-danger">
-	<%= flash[:alert] %><br>
-</div><% end %>
-<%if flash[:notice] %>
-<div class="alert alert-success">
-	<%= flash[:notice] %><br>
-</div><% end %>
-<%if flash[:message] %>
-<div class="alert alert-info">
-	<%= flash[:message] %><br>
-</div><% end %>
 <%= yield %>
 </div>
 </body>
