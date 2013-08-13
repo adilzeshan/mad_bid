@@ -29,7 +29,8 @@ class ListingsController < ApplicationController
 		# but this is not flexible enough if we won't to specify fields, so we can do:
 		respond_with @listing do |format|
 			format.html
-			format.json {render json: @listing.as_json(only: [:current_price, :latest_bidder, :active])}
+			# no need anymore:
+			# format.json {render json: @listing.as_json(only: [:current_price, :latest_bidder, :active])}
 		end
   end
 

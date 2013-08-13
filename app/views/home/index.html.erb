@@ -17,7 +17,7 @@ var listings = <%= @listings.map(&:id) %>
 		  <div class="panel-footer <%="li-#{listing.id}"%>">
 		  	<h2 class="price"><%= "£#{(listing.current_price/100.0)}" %></h2>
 		  	<div class="status">
-					<h4 data-countdown="<%= listing.countdown_duration %>" id="timer-<%=listing.id%>"></h4><br>
+					<h4 data-countdown="<%= listing.countdown_duration %>" data-expiry="<%= listing.expiring_date %>" id="timer-<%=listing.id%>"></h4><br>
 					<h5 class="bidder"><%= listing.latest_bidder %></h5>
 				</div>
 				<button type="button" data-listing-id="<%=listing.id%>" class="btn btn-warning bid"><i class="icon-legal"></i><br>&nbsp;Bid</button>
@@ -30,24 +30,22 @@ var listings = <%= @listings.map(&:id) %>
 
 <script type="text/javascript">
 
-function getListing(listing_id) {
-	$.getJSON('listings/'+ listing_id, function(data) {
-		// var current_price = data.current_price;
-		// var latest_bidder = data.latest_bidder;
-		// console.log(latest_bidder, current_price);
-		//$('.price').html('£' + current_price/100)
-		//to create the impression of speed before the server even receives the bid
-		$('.li-' + listing_id + ' .price').html('£' + data.current_price/100);
-		//individual price class
-		$('.li-' + listing_id + ' .bidder').html(data.latest_bidder);
-	});
-};
-
 function postBid(listing_id) {
-	$.post('bids/create', { id: listing_id }).done(getListing(listing_id));
-	console.log({ id : listing_id });
+	$.post('bids/create', { id: listing_id })
+		console.log({ id : listing_id });
 }
+
+function fetchAndAnimateBid(listing_id, current_price, latest_bidder) {
+	// might nest
+	// pass expiry-date & base time remaining on that?
 	
+	resetTimer(listing_id);
+	$("#timer-" + listing_id).animate({fontSize: "28"}, 10);
+	$("#timer-" + listing_id).animate({fontSize: "18"}, 400);
+	$('.li-' + listing_id + ' .price').text('£' + (current_price/100).toFixed(2));
+	$('.li-' + listing_id + ' .bidder').text(latest_bidder);
+}
+
 $(document).ready(function() {
 	$(".bid").click(function(event) {
 	  //var listing_id = $(event.target).data("listingId");
@@ -63,7 +61,7 @@ function timer(listing_id) {
 		var counter = setInterval(function() { timer(timerElement) }, 1000);
 		function timer(el) {
 		  if(el.data('time-remaining') === undefined) {
-		  	el.data('time-remaining', el.data('countdown'))
+		  	el.data('time-remaining', el.data('countdown') + 1)	// account for -1
 		  }
 			count = el.data('time-remaining') - 1;
 
@@ -78,14 +76,16 @@ function timer(listing_id) {
 		}
 }
 
-function resetTimer(el) {
-	el.data('time-remaining', el.data('countdown'));
+function resetTimer(listing_id) {
+	var el = $("#timer-" + listing_id);
+	el.data('time-remaining', el.data('countdown')+1);
+	//timer(listing_id);
 }
 
 $(document).ready(function() {
-for (var i = listings.length - 1; i >= 0; i--) {
-	timer(listings[i]);
-};
+	for (var i = listings.length - 1; i >= 0; i--) {
+		timer(listings[i]);
+	};
 });
 
 
