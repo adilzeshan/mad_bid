@@ -1,0 +1,69 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+body {
+  background: #f7f7f9; }
+
+/*.listing {
+	width: 400px;
+}*/
+.panel {
+  text-align: center; }
+
+.panel-footer {
+  height: 65px;
+  padding-right: 0; }
+
+.panel-footer * {
+  display: inline; }
+
+.panel-footer h4 {
+  color: red; }
+
+.panel-footer h2 {
+  float: left;
+  margin-top: 5px; }
+
+.panel a {
+  color: black; }
+
+.status {
+  float: left;
+  width: 170px;
+  display: block;
+  text-align: center; }
+
+.panel-footer button {
+  float: right;
+  height: 65px;
+  width: 65px;
+  margin-top: -10px;
+  border-radius: 0px 0px 4px 0px; }
+
+.navbar-form .form-control {
+  width: 100px;
+  margin-top: 8px;
+  /*	display: none;
+  */ }
+
+#user_remember_me, .navbar-form label {
+  /*	display: none;
+  */ }
+
+.navbar-brand {
+  margin-top: 12px;
+  font-size: xx-large; }
+
+.icon-legal {
+  font-size: xx-large; }
