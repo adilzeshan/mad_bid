@@ -1,3 +1,7 @@
+<!-- number to price rails method -->
+<script type="text/javascript">
+var listings = <%= @listings.map(&:id) %>
+</script>
 
 
 <div class="row">
@@ -13,7 +17,7 @@
 		  <div class="panel-footer <%="li-#{listing.id}"%>">
 		  	<h2 class="price"><%= "£#{(listing.current_price/100.0)}" %></h2>
 		  	<div class="status">
-					<h4>00:00:07</h4><br>
+					<h4 data-countdown="<%= listing.countdown_duration %>" data-last-bid="<%= (listing.latest_bid_time.to_f*1000).round %>" id="timer-<%=listing.id%>"></h4><br>
 					<h5 class="bidder"><%= listing.latest_bidder %></h5>
 				</div>
 				<button type="button" data-listing-id="<%=listing.id%>" class="btn btn-warning bid"><i class="icon-legal"></i><br>&nbsp;Bid</button>
@@ -26,29 +30,73 @@
 
 <script type="text/javascript">
 
-function getListing(listing_id) {
-	$.getJSON('listings/'+ listing_id +'show', function(data) {
-		var current_price = data.current_price;
-		var latest_bidder = data.latest_bidder;
-		// console.log(latest_bidder, current_price);
-		//$('.price').html('£' + current_price/100)
-		//to create the impression of speed before the server even receives the bid
-		$('.li-' + listing_id + ' .price').html('£' + current_price/100);
-		//individual price class
-		$('.li-' + listing_id + ' .bidder').html(latest_bidder);
-	});
-};
-
 function postBid(listing_id) {
-	$.post('bids/create', { id: listing_id }).done(getListing(listing_id));
-	console.log({ id : listing_id });
+	$.post('bids/create', { id: listing_id })
+		console.log({ id : listing_id });
 }
-	
+
+function fetchAndAnimateBid(listing_id, current_price, latest_bidder) {
+	// might nest
+	// pass expiry-date & base time remaining on that?
+
+	resetTimer(listing_id);
+	$("#timer-" + listing_id).animate({fontSize: "28"}, 10);
+	$("#timer-" + listing_id).animate({fontSize: "18"}, 400);
+	$('.li-' + listing_id + ' .price').text('£' + (current_price/100).toFixed(2));
+	$('.li-' + listing_id + ' .bidder').text(latest_bidder);
+}
+
 $(document).ready(function() {
 	$(".bid").click(function(event) {
-	  var listing_id = $(event.target).data("listingId");
-	  postBid(listing_id);
+	  //var listing_id = $(event.target).data("listingId");
+	  $(postBid($(this).data("listingId")));
 	});
 });
+
+
+function timer(listing_id) {
+		var timerElement = $("#timer-" + listing_id);
+		// var count = timerElement.data("countdown");
+
+		var counter = setInterval(function() { timer(timerElement) }, 1000);
+		function timer(el) {
+		  // if(el.data('time-remaining') === undefined) {
+		  // 	el.data('time-remaining', el.data('countdown') + 1)	// account for -1
+		  // }
+			count = el.data('time-remaining') - 1;
+
+			min = ("0" + Math.floor(count/60)).slice(-2);
+			sec = ("0" + count % 60).slice(-2);
+		  if (count < 0) {
+		     clearInterval(counter);
+		     return;
+		  };
+			el.html("00"+ ":" + min + ":" + sec);
+			el.data('time-remaining', count);
+		}
+}
+
+function resetTimer(listing_id) {
+	var el = $("#timer-" + listing_id);
+	el.data('time-remaining', el.data('countdown')+1);
+	//timer(listing_id);
+}
+
+function initTimeRemaining(listing_id) {
+	var el = $("#timer-" + listing_id);
+	var past = Math.floor( ((new Date()).getTime() - el.data('last-bid'))/1000 );
+	var delta = el.data('countdown') - past;
+	//var delta = Math.floor((new Date() - d)/1000); 	//floor or top?
+	el.data('time-remaining', delta);
+	console.log((new Date()).getTime() + '-' + (el.data('last-bid')) + ' = ' + delta);
+}
+
+$(document).ready(function() {
+	for (var i = listings.length - 1; i >= 0; i--) {
+		initTimeRemaining(listings[i]);
+		timer(listings[i]);
+	};
+});
+
 
 </script>
