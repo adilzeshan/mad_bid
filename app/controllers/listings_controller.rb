@@ -26,7 +26,7 @@ class ListingsController < ApplicationController
 
   def show
   	current_listing
-  		current_listing.expired?
+  		# current_listing.expired?
 		# but this is not flexible enough if we won't to specify fields, so we can do:
 		respond_with @listing do |format|
 			format.html

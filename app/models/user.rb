@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
 	
 	has_many :bids
 
-
-
   #private
   def makes_bid item
     time_now = Time.now
@@ -17,5 +15,4 @@ class User < ActiveRecord::Base
     my_bid.update_price item.current_price
     item.add_bid(self.username, my_bid.id, time_now)
   end
-
 end
