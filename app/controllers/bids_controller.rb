@@ -13,8 +13,11 @@ class BidsController < ApplicationController
   # if post successful
   #flash, login popup?
 
-    WebsocketRails[:bids].trigger 'new',
-      { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
+    #WebsocketRails[:bids].trigger 'new',
+    #  { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
+     websocket[:bids].trigger 'new',
+       { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
+  	end
   end
   end
 end

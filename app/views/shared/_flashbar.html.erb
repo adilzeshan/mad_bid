@@ -1,0 +1,13 @@
+<div class="container">
+<%if flash[:alert] %>
+<div class="alert alert-danger">
+	<%= flash[:alert] %><br>
+</div><% end %>
+<%if flash[:notice] %>
+<div class="alert alert-success">
+	<%= flash[:notice] %><br>
+</div><% end %>
+<%if flash[:message] %>
+<div class="alert alert-info">
+	<%= flash[:message] %><br>
+</div><% end %>

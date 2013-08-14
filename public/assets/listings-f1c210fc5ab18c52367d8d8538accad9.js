@@ -1,1 +1,0 @@
-!function(){var e,i;i=new WebSocketRails("localhost:3000/websocket"),e=i.subscribe("bids"),e.bind("new",function(e){return fetchAndAnimateBid(e.id,e.current_price,e.latest_bidder)})}.call(this);
