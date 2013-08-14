@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # first_admin = Admin.create( username: 'admin', password: ENV['admin_pwd'] )
-first_admin = Admin.create( email: 'admin@locobid.co.uk', password: 'Locobid1984' )
+first_admin = Admin.create(email: 'admin@locobid.co.uk', password: 'Locobid1984')
