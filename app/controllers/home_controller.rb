@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 			#@listings = Listing.find_by(active:true)
 			#@listings = Listing.find_by_active(false)
 			#@listings = Listing.find_all_by_active(true)
-			@listings = Listing.where(active: true)
+			@listings = Listing.where(active: true).order('created_at desc')
   	end
   end
 end
