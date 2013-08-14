@@ -10,9 +10,13 @@ class User < ActiveRecord::Base
 
   #private
   def makes_bid item
-    time_now = Time.now
-    my_bid = Bid.create(user: self, listing: item)
-    my_bid.update_price item.current_price
-    item.add_bid(self.username, my_bid.id, time_now)
+    if item.expired?
+      item.active = false
+    else
+      time_now = Time.now
+      my_bid = Bid.create(user: self, listing: item)
+      my_bid.update_price item.current_price
+      item.add_bid(self.username, my_bid.id, time_now)
+    end
   end
 end

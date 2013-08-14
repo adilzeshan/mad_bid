@@ -42,6 +42,7 @@ RSpec.configure do |config|
   config.order = "random"
   config.formatter = :documentation
   # Helpers
+  # config.include FactoryGirl::Syntax::Methods
   config.include(UserHelper)
   config.include(ListingHelper)
   config.include(CreditHelper)

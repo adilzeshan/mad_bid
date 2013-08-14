@@ -12,8 +12,11 @@ FactoryGirl.define do
     active false
 
     factory :active_listing, class: Listing do
-      starting_date Time.now
       active true
+
+      factory :inactive_listing, class: Listing do
+        starting_date Time.now - 12
+      end
     end
   end
 end

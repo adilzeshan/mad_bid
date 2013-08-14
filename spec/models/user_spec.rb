@@ -3,6 +3,25 @@ require 'spec_helper'
 describe User do
 
   context 'bidding' do
+
+    context 'user makes bid after listing expires' do
+      item = FactoryGirl.build(:inactive_listing)
+      me = FactoryGirl.build(:user)
+
+        it 'should check if the item is expired' do
+          expect(item.expired?).to be_true
+        end
+
+        it 'should not be able to bid' do
+          # bid =  me.makes_bid item
+          expect(me.makes_bid item).to be_false
+        end
+    end
+
+    context 'user makes bid before listing expires' do
+      
+    end
+
   	it 'should add their bid to the listing' do
   		item = double :listing
   		bid = double :bid
