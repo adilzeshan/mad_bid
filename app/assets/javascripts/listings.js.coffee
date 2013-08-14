@@ -7,7 +7,8 @@
 	# resetTimer(listing.id);
 #	fetchAndAnimateBid(listing.id, listing.current_price, listing.latest_bidder)
 
-dispatcher = new Pusher('866b030cd31ed28be4af', { cluster: 'eu' });
+
+dispatcher = new WebSocketRails?('localhost:3000/websocket') || new Pusher('866b030cd31ed28be4af', { cluster: 'eu' });
 channel = dispatcher.subscribe('bids');
 channel.bind 'new', (listing) ->
 	fetchAndAnimateBid(listing.id, listing.current_price, listing.latest_bidder)

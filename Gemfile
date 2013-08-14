@@ -31,7 +31,6 @@ gem 'jbuilder', '~> 1.2'
 # Authentication
 gem 'devise'
 
-gem 'websocket-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -42,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.2.0'
+  gem 'websocket-rails'
 end
 
 group :production do

@@ -11,7 +11,7 @@ class BidsController < ApplicationController
 
     #WebsocketRails[:bids].trigger 'new',
     #  { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
-     Pusher[:bids].trigger 'new',
+     websocket[:bids].trigger 'new',
        { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
   	end
   end
