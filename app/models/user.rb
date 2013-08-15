@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
       item.add_bid(self.username, my_bid.id, time_now)
     # end
   end
+
+  def make_payment
+    
+  end
 end
