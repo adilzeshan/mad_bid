@@ -1,12 +1,15 @@
 MadBid::Application.routes.draw do
 
+  get "charges/new"
+  get "charges/create"
   post "bids/create"
   get "home/index"
   get "admins_pannel/index"
   devise_for :users
   resources :listings do
   end
-  
+  resources :charges
+
   root "home#index"
   devise_for :admins
     
