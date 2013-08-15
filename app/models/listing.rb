@@ -46,11 +46,11 @@ class Listing < ActiveRecord::Base
 	end
 
 	def add_bid(username, bid_id, time)
-		update(latest_bidder: username, latest_bid_time: time, latest_bid_id:bid_id, current_price: self.current_price + 1)
+		self.update(latest_bidder: username, latest_bid_time: time, latest_bid_id:bid_id, current_price: self.current_price + 1)
 	end
 
   def set_countdown_duration seconds
-    update(countdown_duration: seconds)
+    self.update(countdown_duration: seconds)
   end
 
   def expired?
