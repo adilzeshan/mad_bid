@@ -3,7 +3,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-  	@amount = 500
+  	@amount = params[:amount].to_i
+		raise "Unexpected price" unless [500, 2500].include? @amount
 
 	  customer = Stripe::Customer.create(
 	    :email => current_user.email,
@@ -16,8 +17,11 @@ class ChargesController < ApplicationController
 	    :currency    => 'gbp'
 	  )
 
+	  payment = Payment.create(no_of_credits: @amount*5, payment_amount: @amount, user_id: current_user.id)
+	  current_user.update(amount_of_credits: current_user.amount_of_credits + @amount * 5)
+
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
 		  redirect_to charges_path
-  end
+	  end
 end

@@ -5,7 +5,7 @@ class BidsController < ApplicationController
       # of ids of the active listings. Or catch an exception
       # => find will return a massive exceptiom
       # => find_by will return a nil.
-    @listing = Listing.find(params['id'].to_i)
+    @listing = Listing.find(params['id'])
    # puts params['id'].to_i
    # puts @listing.to_s
       current_user.makes_bid @listing
