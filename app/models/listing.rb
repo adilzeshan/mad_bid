@@ -54,7 +54,7 @@ class Listing < ActiveRecord::Base
   end
 
   def expired?
-    if Time.now > starting_date + countdown_duration
+    if Time.now > latest_bid_time + countdown_duration
       return self.update(active: false)
     end
     return true
