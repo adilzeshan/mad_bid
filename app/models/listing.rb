@@ -21,6 +21,10 @@
 # set countdown duration to something else
 class Listing < ActiveRecord::Base
 
+  before_validation(on: :create) do
+    self.latest_bid_time = starting_date
+  end
+
 	validates :title, :starting_price, :rrp, :credits_per_bid, :countdown_duration,
 						:starting_date, :expiring_date, presence: true
 
@@ -34,7 +38,6 @@ class Listing < ActiveRecord::Base
 	
 	validates :starting_price, :rrp, :current_price, :credits_per_bid, :countdown_duration,
 	numericality: { only_integer: true }
-
 
 	has_many :bids
 
