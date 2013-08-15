@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Payment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "makes a payment" do
+  	my_payment = Payment.new
+  end
 end
