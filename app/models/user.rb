@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          authentication_keys: [ :username ]
 	
 	has_many :bids
+  has_many :payments
 
   #private
   def makes_bid item
