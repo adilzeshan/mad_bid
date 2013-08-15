@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     # end
   end
 
-  def make_payment
+  def make_payment credits
     
   end
 end
