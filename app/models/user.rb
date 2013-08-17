@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
   def make_payment credits
     
   end
+
+  def add_credits amount
+    self.update(amount_of_credits: self.amount_of_credits + amount * 5)
+  end
 end

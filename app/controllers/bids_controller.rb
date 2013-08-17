@@ -7,12 +7,8 @@ class BidsController < ApplicationController
       # => find_by will return a nil.
     @listing = Listing.find(params['id'])
     current_user.makes_bid @listing
-  #else
-  # if post successful
-  #flash, login popup?
-
-     websocket[:bids].trigger 'new',
-       { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
+    websocket[:bids].trigger 'new',
+      { id: @listing.id, current_price: @listing.current_price, latest_bidder: @listing.latest_bidder, active: @listing.active }
     end
   end
 end
