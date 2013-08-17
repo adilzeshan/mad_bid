@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     self.update(amount_of_credits: self.amount_of_credits + amount * 5)
   end
 
-  def charge_credits_for_bid
+  def deduct_credits_for_bid 
     
   end
 end
