@@ -17,7 +17,7 @@
 <h4 class="navbar-text">Signed in as
 <%= link_to current_user.username.capitalize, dashboard_path, class: "navbar-link"%></h4>
 <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-default navbar-btn pull-right"%><br>
-<p class="navbar-text"><a href='/dashboard'>credits: <%= current_user.amount_of_credits.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse %></a></p>
+<p class="navbar-text"><a href='more_credits'>credits: <%= current_user.amount_of_credits.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse %></a></p>
 
 
 <% end %>

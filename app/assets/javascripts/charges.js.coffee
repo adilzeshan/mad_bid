@@ -10,9 +10,9 @@ $ ->
     StripeCheckout.open {
       key:         'pk_test_yenvKU3x9QQS2WcODkHHCEjQ',
       address:     false,
-      amount:      $('#amount').val(),
+      amount:      $('input[name=amount]:checked').val(),
       currency:    'gbp',
-      name:        $('#amount option:selected').text(),
+      name:        "Credits Package",
       description: 'For bidding on auctions',
       panelLabel:  'Checkout',
       token:       token

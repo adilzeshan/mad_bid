@@ -1,7 +1,60 @@
-<%= form_tag charges_path do %>
-<%= select_tag :amount, options_for_select('100 credits' => 500, '500 credits' => 2500) %><br><br>
+<div class="navbar navbar-static-top">
+	<a class="navbar-brand" href="/" style="color:black">LOCO<span style="color:darkorange">Bid</span></a>
+</div>
+<%= render "shared/flashbar" %>
 
-<button type="submit" id='buy-credits' class='btn btn-success btn-lg'>Buy Credits</button>
+<h2>Choose a Credit Package</h2><br>
+<%= form_tag charges_path do %>
+<div class="row packages">
+
+  <div class="col-lg-3">
+  	<div class="panel">
+		<input type="radio" id="radio1" name="amount" value="300">
+		<label for="radio1">
+			SMALL<br>
+			<%= image_tag("1500.png", alt: "1500") %><br>
+			<h3>£2.99</h3>
+		</label>
+		</div>
+  </div>
+
+
+  <div class="col-lg-3">
+  	<div class="panel">
+		<input type="radio" id="radio2" name="amount" value="400">
+		<label for="radio2">MEDIUM<br>
+			<%= image_tag("2000.png", alt: "2000") %><br>
+			<h3>£3.99</h3>
+		</label>
+		</div>
+  </div>
+
+
+  <div class="col-lg-3">
+  	<div class="panel">
+		<input type="radio" id="radio3" name="amount" value="600" checked>
+		<label for="radio3">LARGE<br>
+			<%= image_tag("3000.png", alt: "3000") %><br>
+			<h3>£5.99</h3>
+		</label>
+		</div>
+  </div>
+
+	<div class="col-lg-3">
+  	<div class="panel">
+		<input type="radio" id="radio4" name="amount" value="1000" checked>
+		<label for="radio4">X-LARGE<br>
+			<%= image_tag("5000.png", alt: "5000") %><br>
+			<h3>£9.99</h3>
+		</label>
+		</div>
+  </div>
+
+
+</div><br><br>
+
+
+
+<button type="submit" id='buy-credits' class='btn btn-success btn-lg pull-right'>Buy Credits</button>
 
 <% end %>
-

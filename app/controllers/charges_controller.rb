@@ -4,8 +4,8 @@ class ChargesController < ApplicationController
 
   def create
   	@amount = params[:amount].to_i
-		raise "Unexpected price" unless [500, 2500].include? @amount
-
+		raise "Unexpected price" unless [200, 300, 400, 500, 600, 1000, 1500, 3750, 2000].include? @amount
+		# delete 2000
 	  customer = Stripe::Customer.create(
 	    :email => current_user.email,
 	    :card  => params[:stripeToken]

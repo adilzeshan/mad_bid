@@ -1,3 +1,37 @@
 // Place all the styles related to the Charges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.package {
+	background-color: pink;
+	border-right: 1px solid black;
+}
+
+input[type=radio] {
+    display:none; 
+}
+ 
+input[type=radio] + label {
+    display:inline-block;
+/*    margin:-2px;
+    padding: 4px 12px;*/
+    border-color: #ddd;
+    width: 100%;
+    margin: 0;
+    border-radius: 3px;
+    padding-bottom: 5px;
+}
+
+
+.col-lg-3:hover .panel{
+	background-color: GhostWhite;
+}
+
+
+.col-lg-3 .panel {
+	padding: 0;
+}
+
+input[type=radio]:checked + label {
+	background-color: rgb(238, 238, 238);	
+}
