@@ -43,12 +43,21 @@ describe User do
 
   context 'credits' do
 
-    it 'should deduct credits for each bid' do
+    it 'should add credits when user purchases some' do
       user = FactoryGirl.build(:user)
       listing = FactoryGirl.build(:active_listing)
-      user.add_credits(100)
-      expect(user.amount_of_credits).to eq 2500
+      old_amount = user.amount_of_credits
+      user.add_credits(500)
+      expect(user.amount_of_credits).to eq old_amount+500*5
+    end
 
+    it "should deduct credits when user bids" do
+      user = FactoryGirl.build(:user)
+      listing = FactoryGirl.build(:active_listing)
+      user.add_credits(500)
+      old_balance = user.amount_of_credits
+      user.makes_bid listing
+      expect(user.amount_of_credits).to eq old_balance - listing.credits_per_bid      
     end
     
   end

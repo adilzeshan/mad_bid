@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
       time_now = Time.now
       my_bid = Bid.create(user: self, listing: item)
       my_bid.update_price item.current_price
+      deduct_credits_for_bid item.credits_per_bid
       item.add_bid(self.username, my_bid.id, time_now)
 #    end
   end
@@ -29,7 +30,8 @@ class User < ActiveRecord::Base
     self.update(amount_of_credits: self.amount_of_credits + amount * 5)
   end
 
-  def deduct_credits_for_bid 
-    
+  # credits_per_bid
+  def deduct_credits_for_bid charge
+    self.update(amount_of_credits: self.amount_of_credits - charge)
   end
 end
