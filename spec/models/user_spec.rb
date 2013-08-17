@@ -8,11 +8,11 @@ describe User do
       item = FactoryGirl.build(:inactive_listing)
       me = FactoryGirl.build(:user)
 
-        it 'should check if the item is expired' do
+        xit 'should check if the item is expired' do
           expect(item.expired?).to be_true
         end
 
-        it 'should not be able to bid' do
+        xit 'should not be able to bid' do
           # bid =  me.makes_bid item
           expect(me.makes_bid item).to be_false
         end
@@ -22,17 +22,34 @@ describe User do
       
     end
 
-  xit 'should add their bid to the listing' do
-  item = double :listing
-  bid = double :bid
-  bid.stub(:id).and_return(1)
+    xit 'should add their bid to the listing' do
+      item = double :listing
+      bid = double :bid
+      bid.stub(:id).and_return(1)
 
-  bid.stub(:id).and_return(1)
-  me = User.create
-  Bid.stub(:create).with(user: me, listing: item).and_return(bid)
+      bid.stub(:id).and_return(1)
+      me = User.create
+      Bid.stub(:create).with(user: me, listing: item).and_return(bid)
 
-  item.should_receive(:add_bid)
-  me.makes_bid item
+      item.should_receive(:add_bid)
+      me.makes_bid item
+    end
   end
+
+
+
+
+
+
+  context 'credits' do
+
+    it 'should deduct credits for each bid' do
+      user = FactoryGirl.build(:user)
+      listing = FactoryGirl.build(:active_listing)
+      user.add_credits(100)
+      expect(user.amount_of_credits).to eq 2500
+
+    end
+    
   end
 end

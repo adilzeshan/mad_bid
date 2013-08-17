@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
   def add_credits amount
     self.update(amount_of_credits: self.amount_of_credits + amount * 5)
   end
+
+  def charge_credits_for_bid
+    
+  end
 end

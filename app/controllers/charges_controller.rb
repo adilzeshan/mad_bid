@@ -19,7 +19,6 @@ class ChargesController < ApplicationController
 
 	  payment = Payment.create(no_of_credits: @amount*5, payment_amount: @amount, user_id: current_user.id)
 	  current_user.add_credits(@amount)
-	  
 
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message

@@ -1,8 +1,7 @@
 <%= form_tag charges_path do %>
-<%= select_tag :amount, options_for_select('100 credits' => 500, '500 credits' => 2500) %>
+<%= select_tag :amount, options_for_select('100 credits' => 500, '500 credits' => 2500) %><br><br>
 
-  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"></script>
+<button type="submit" id='buy-credits' class='btn btn-success btn-lg'>Buy Credits</button>
+
 <% end %>
+
