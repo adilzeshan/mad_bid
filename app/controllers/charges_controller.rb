@@ -23,7 +23,7 @@ class ChargesController < ApplicationController
 	  payment = Payment.create(no_of_credits: @amount*5, payment_amount: @amount, user_id: current_user.id)
 	  current_user.add_credits(@amount)
 		flash[:notice] = "Thanks " + current_user.username.capitalize + ". Your purchase has gone through!"
-		redirect_to home_index_path
+		redirect_to root_path
 
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
