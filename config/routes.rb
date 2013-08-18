@@ -3,6 +3,7 @@ MadBid::Application.routes.draw do
   #get "charges/new"
   #get "charges/create"
   post "bids/create"
+  get "bids/show"
   get "home/index"
   get "admins_pannel/index"
   devise_for :users

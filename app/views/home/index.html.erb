@@ -34,8 +34,12 @@ var listings = <%= @listings.map(&:id) %>
 <script type="text/javascript">
 
 function postBid(listing_id) {
-	$.post('bids/create', { id: listing_id })
-		console.log({ id : listing_id });
+	$.post('bids/create', { id: listing_id }).done(function() {
+		$.getJSON('bids/show.json', function(data) {
+			$('#credits').text(data.amount_of_credits.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) 
+		});
+	});
+	console.log({ id : listing_id });
 }
 
 function fetchAndAnimateBid(listing_id, current_price, latest_bidder) {
