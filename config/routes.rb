@@ -14,7 +14,7 @@ MadBid::Application.routes.draw do
   devise_for :admins
   get "user_dashboard/index"
   get 'dashboard', to: 'user_dashboard#index'
-  get 'more_credits', to: 'charges#new'
+  #get 'more_credits', to: 'charges#new'
 
     
   # The priority is based upon order of creation: first created -> highest priority.
