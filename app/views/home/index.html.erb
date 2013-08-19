@@ -14,7 +14,7 @@ var listings = <%= @listings.map(&:id) %>
 			<div class="panel">
 			<!-- <a href="<%= url_for(listing) %>"> -->
 				<h4> <%= listing.title %> </h4>
-				<h5> RRP: <%= "£ #{listing.rrp.to_f}" %> </h5>
+				<h5> RRP: <%= "£ #{listing.rrp.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}.0" %> </h5>
 				<img src="<%=listing.description%>" class="img-responsive">
 			<!-- </a> -->
 		  <div class="panel-footer <%="li-#{listing.id}"%>">
